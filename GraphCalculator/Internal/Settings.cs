@@ -32,6 +32,7 @@ namespace Telesyk.GraphCalculator.Internal
 			bool.TryParse(ConfigurationManager.AppSettings["multi-input-for-values"], out isMultiInputForValues);
 			IsMultiInputForValues = isMultiInputForValues;
 
+			TitleString = ConfigurationManager.AppSettings["title"];
 			EncodingString = ConfigurationManager.AppSettings["encoding"];
 			WrongDataString = ConfigurationManager.AppSettings["wrong-data"];
 			ValueCountString = ConfigurationManager.AppSettings["value-count"];
@@ -64,6 +65,8 @@ namespace Telesyk.GraphCalculator.Internal
 		public static bool IsCalculateTime { get; }
 
 		public static bool IsMultiInputForValues { get; }
+
+		public static string TitleString { get; }
 
 		public static string EncodingString { get; }
 

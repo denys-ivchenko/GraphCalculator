@@ -9,7 +9,7 @@ namespace Telesyk.GraphCalculator
 	{
 		static void Main(string[] args)
 		{
-			Console.Title = "Graph Calculator";
+			Console.Title = Settings.TitleString;
 
 			Proccesor.Procces();
 		}
