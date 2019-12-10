@@ -20,24 +20,24 @@ namespace Telesyk.GraphCalculator.Internal
 				bool isFractionalFunctions = false;
 				bool isFunctionsDenominators = false;
 
-				int valueCount = Utils.ReadInteger(writer, Settings.ValueCountString);
+				int valueCount = Utils.ReadInteger(writer, Settings.StringValueCount);
 
 				int[] values = null;
 
 				if (!Settings.IsMultiInputForValues)
-					values = Utils.ReadIntegers(writer, Settings.InputValueString, valueCount, true);
+					values = Utils.ReadIntegers(writer, Settings.StringInputValue, valueCount, true);
 
-				int limitedFunctionCount = Utils.ReadInteger(writer, Settings.LimitationFunctionCountString);
+				int limitedFunctionCount = Utils.ReadInteger(writer, Settings.StringLimitationFunctionCount);
 				List<LimitationFunction> limitationFunctions = Utils.ReadFunctions<LimitationFunction>(writer, limitedFunctionCount, valueCount, values);
 
-				int functionCount = Utils.ReadInteger(writer, Settings.FunctionCountString);
+				int functionCount = Utils.ReadInteger(writer, Settings.StringFunctionCount);
 
 				if (functionCount > 0)
 				{ 
-					isFractionalFunctions = Utils.ReadBoolean(writer, Settings.AsFractionalFunctionsString);
+					isFractionalFunctions = Utils.ReadBoolean(writer, Settings.StringAsFractionalFunctions);
 
 					if (isFractionalFunctions)
-						isFunctionsDenominators = Utils.ReadBoolean(writer, Settings.InputFunctionsDenominatorsString);
+						isFunctionsDenominators = Utils.ReadBoolean(writer, Settings.StringInputFunctionsDenominators);
 				}
 
 				List<MaximalFunction> maximalFunctions = Utils.ReadFunctions<MaximalFunction>(writer, functionCount, valueCount, isFunctionsDenominators);
@@ -52,12 +52,12 @@ namespace Telesyk.GraphCalculator.Internal
 				{
 					for (int i = 0; i < limitationFunctions.Count; i++)
 					{
-						writer.WriteLine($"{string.Format(Settings.LimitationFunctionResultsString, i + 1)}:");
+						writer.WriteLine($"{string.Format(Settings.StringLimitationFunctionResults, i + 1)}:");
 
 						foreach (Result result in limitationFunctions[i].Results.Values)
 							writer.WriteLine($"{result.Combination}\t{result.Value}");
 
-						writer.WriteLine($"{Settings.CountString} : {limitationFunctions[i].Results.Count}");
+						writer.WriteLine($"{Settings.StringCount} : {limitationFunctions[i].Results.Count}");
 						writer.WriteLine();
 					}
 				}
@@ -68,12 +68,12 @@ namespace Telesyk.GraphCalculator.Internal
 				#region Advanced mode: matches
 				if (Settings.IsAdvancedMode)
 				{
-					writer.WriteLine($"{Settings.MatchesString}:");
+					writer.WriteLine($"{Settings.StringMatches}:");
 
 					foreach (Result result in matches)
 						writer.WriteLine($"{result.Combination}\t{result.Value}");
 
-					writer.WriteLine($"{Settings.CountString} : {matches.Count}");
+					writer.WriteLine($"{Settings.StringCount} : {matches.Count}");
 					writer.WriteLine();
 				}
 				#endregion
@@ -81,7 +81,7 @@ namespace Telesyk.GraphCalculator.Internal
 				List<Result> maximums = Utils.GetMaximums(watcher, matches, maximalFunctions, isFractionalFunctions, isFunctionsDenominators);
 
 				foreach (Result result in maximums)
-					writer.WriteLine($"{Settings.ResultString}: {result.Combination}\t{result.Value}\t{result.MaximalFunctionResult}");
+					writer.WriteLine($"{Settings.StringResult}: {result.Combination}\t{result.Value}\t{result.MaximalFunctionResult}");
 
 				writer.WriteLine();
 
@@ -91,14 +91,14 @@ namespace Telesyk.GraphCalculator.Internal
 
 				if (Settings.IsCalculateTime)
 				{
-					writer.WriteLine(string.Format(Settings.ExecutionInfoString, watcher.Operations, watcher.Interval));
+					writer.WriteLine(string.Format(Settings.StringExecutionInfo, watcher.Operations, watcher.Interval));
 					writer.WriteLine();
 				}
 
-				writer.WriteLine(string.Format(Settings.ExecutionTimeString, executionTime));
+				writer.WriteLine(string.Format(Settings.StringExecutionTime, executionTime));
 				writer.WriteLine();
 
-				writer.WriteLine(Settings.GoNewlyString);
+				writer.WriteLine(Settings.StringGoNewly);
 				writer.WriteLine();
 			}
 		}

@@ -32,28 +32,28 @@ namespace Telesyk.GraphCalculator.Internal
 			bool.TryParse(ConfigurationManager.AppSettings["multi-input-for-values"], out isMultiInputForValues);
 			IsMultiInputForValues = isMultiInputForValues;
 
-			TitleString = ConfigurationManager.AppSettings["title"];
-			EncodingString = ConfigurationManager.AppSettings["encoding"];
-			WrongDataString = ConfigurationManager.AppSettings["wrong-data"];
-			ValueCountString = ConfigurationManager.AppSettings["value-count"];
-			InputValueString = ConfigurationManager.AppSettings["input-values"];
-			FunctionInputValueString = ConfigurationManager.AppSettings["function-input-values"];
-			LimitationFunctionCountString = ConfigurationManager.AppSettings["limitation-function-count"];
-			LimitationFunctionString = ConfigurationManager.AppSettings["limitation-function"];
-			LimitationString = ConfigurationManager.AppSettings["limitation"];
-			FunctionMaximumString = ConfigurationManager.AppSettings["function-maximum"];
-			FunctionCountString = ConfigurationManager.AppSettings["function-count"];
-			FunctionString = ConfigurationManager.AppSettings["function"];
-			AsFractionalFunctionsString = ConfigurationManager.AppSettings["as-fractional-functions"];
-			InputFunctionsDenominatorsString = ConfigurationManager.AppSettings["input-functions-denominators"];
-			FunctionsDenominatorsString = ConfigurationManager.AppSettings["functions-denominators"];
-			ResultString = ConfigurationManager.AppSettings["result"];
-			CountString = ConfigurationManager.AppSettings["count"];
-			LimitationFunctionResultsString = ConfigurationManager.AppSettings["limitation-function-results"];
-			MatchesString = ConfigurationManager.AppSettings["matches"];
-			ExecutionInfoString = ConfigurationManager.AppSettings["execution-info"];
-			ExecutionTimeString = ConfigurationManager.AppSettings["execution-time"];
-			GoNewlyString = ConfigurationManager.AppSettings["go-newly"];
+			StringTitle = ConfigurationManager.AppSettings["title"];
+			StringEncoding = ConfigurationManager.AppSettings["encoding"];
+			StringWrongData = ConfigurationManager.AppSettings["wrong-data"];
+			StringValueCount = ConfigurationManager.AppSettings["value-count"];
+			StringInputValue = ConfigurationManager.AppSettings["input-values"];
+			StringFunctionInputValue = ConfigurationManager.AppSettings["function-input-values"];
+			StringLimitationFunctionCount = ConfigurationManager.AppSettings["limitation-function-count"];
+			StringLimitationFunction = ConfigurationManager.AppSettings["limitation-function"];
+			StringLimitation = ConfigurationManager.AppSettings["limitation"];
+			StringFunctionMaximum = ConfigurationManager.AppSettings["function-maximum"];
+			StringFunctionCount = ConfigurationManager.AppSettings["function-count"];
+			StringFunction = ConfigurationManager.AppSettings["function"];
+			StringAsFractionalFunctions = ConfigurationManager.AppSettings["as-fractional-functions"];
+			StringInputFunctionsDenominators = ConfigurationManager.AppSettings["input-functions-denominators"];
+			StringFunctionsDenominators = ConfigurationManager.AppSettings["functions-denominators"];
+			StringResult = ConfigurationManager.AppSettings["result"];
+			StringCount = ConfigurationManager.AppSettings["count"];
+			StringLimitationFunctionResults = ConfigurationManager.AppSettings["limitation-function-results"];
+			StringMatches = ConfigurationManager.AppSettings["matches"];
+			StringExecutionInfo = ConfigurationManager.AppSettings["execution-info"];
+			StringExecutionTime = ConfigurationManager.AppSettings["execution-time"];
+			StringGoNewly = ConfigurationManager.AppSettings["go-newly"];
 		}
 
 		#endregion
@@ -66,49 +66,49 @@ namespace Telesyk.GraphCalculator.Internal
 
 		public static bool IsMultiInputForValues { get; }
 
-		public static string TitleString { get; }
+		public static string StringTitle { get; }
 
-		public static string EncodingString { get; }
+		public static string StringEncoding { get; }
 
-		public static string WrongDataString { get; }
+		public static string StringWrongData { get; }
 
-		public static string ValueCountString { get; }
+		public static string StringValueCount { get; }
 
-		public static string InputValueString { get; }
+		public static string StringInputValue { get; }
 
-		public static string FunctionInputValueString { get; }
+		public static string StringFunctionInputValue { get; }
 
-		public static string LimitationFunctionCountString { get; }
+		public static string StringLimitationFunctionCount { get; }
 
-		public static string LimitationFunctionString { get; }
+		public static string StringLimitationFunction { get; }
 
-		public static string LimitationString { get; }
+		public static string StringLimitation { get; }
 
-		public static string FunctionMaximumString { get; }
+		public static string StringFunctionMaximum { get; }
 
-		public static string FunctionCountString { get; }
+		public static string StringFunctionCount { get; }
 
-		public static string FunctionString { get; }
+		public static string StringFunction { get; }
 
-		public static string AsFractionalFunctionsString { get; }
+		public static string StringAsFractionalFunctions { get; }
 
-		public static string InputFunctionsDenominatorsString { get; }
+		public static string StringInputFunctionsDenominators { get; }
 
-		public static string FunctionsDenominatorsString { get; }
+		public static string StringFunctionsDenominators { get; }
 
-		public static string ResultString { get; }
+		public static string StringResult { get; }
 
-		public static string CountString { get; }
+		public static string StringCount { get; }
 
-		public static string LimitationFunctionResultsString { get; }
+		public static string StringLimitationFunctionResults { get; }
 
-		public static string MatchesString { get; }
+		public static string StringMatches { get; }
 
-		public static string ExecutionInfoString { get; }
+		public static string StringExecutionInfo { get; }
 
-		public static string ExecutionTimeString { get; }
+		public static string StringExecutionTime { get; }
 
-		public static string GoNewlyString { get; }
+		public static string StringGoNewly { get; }
 
 		#endregion
 	}

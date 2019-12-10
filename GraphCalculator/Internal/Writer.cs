@@ -13,7 +13,7 @@ namespace Telesyk.GraphCalculator.Internal
 		{
 			Encoding encoding;
 
-			try { encoding = Encoding.GetEncoding(Settings.EncodingString); }
+			try { encoding = Encoding.GetEncoding(Settings.StringEncoding); }
 			catch { encoding = Encoding.UTF8; }
    
 			_file = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "out.txt", false, encoding);

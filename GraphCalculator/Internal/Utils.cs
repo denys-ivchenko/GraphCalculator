@@ -36,7 +36,7 @@ namespace Telesyk.GraphCalculator.Internal
 
 				if (string.IsNullOrWhiteSpace(input))
 				{
-					writer.WriteLine(Settings.WrongDataString);
+					writer.WriteLine(Settings.StringWrongData);
 
 					if (writeNewLineForException)
 						writer.WriteLine();
@@ -60,7 +60,7 @@ namespace Telesyk.GraphCalculator.Internal
 						}
 						catch
 						{
-							writer.WriteLine(Settings.WrongDataString);
+							writer.WriteLine(Settings.StringWrongData);
 
 							if (writeNewLineForException)
 								writer.WriteLine();
@@ -73,7 +73,7 @@ namespace Telesyk.GraphCalculator.Internal
 
 				if (length > -1 && items.Count != length)
 				{
-					writer.WriteLine(Settings.WrongDataString);
+					writer.WriteLine(Settings.StringWrongData);
 
 					if (writeNewLineForException)
 						writer.WriteLine();
@@ -115,7 +115,7 @@ namespace Telesyk.GraphCalculator.Internal
 				}
 				catch 
 				{
-					writer.WriteLine(Settings.WrongDataString);
+					writer.WriteLine(Settings.StringWrongData);
 					writer.WriteLine();
 
 					continue;
@@ -140,10 +140,10 @@ namespace Telesyk.GraphCalculator.Internal
 		{
 			List<T> functions = new List<T>();
 
-			string functionString = Settings.FunctionString;
+			string functionString = Settings.StringFunction;
 
 			if (typeof(T) == typeof(LimitationFunction))
-				functionString = Settings.LimitationFunctionString;
+				functionString = Settings.StringLimitationFunction;
 
 			for (int i = 0; i < count; i++)
 			{
@@ -154,7 +154,7 @@ namespace Telesyk.GraphCalculator.Internal
 				_parseFunctionBySymbols(writer, string.Format(functionString, i + 1), i, valueCount, numbers, operators);
 
 				if (Settings.IsMultiInputForValues)
-					values = Utils.ReadIntegers(writer, Settings.FunctionInputValueString.Replace("{0}", (i + 1).ToString()), valueCount, true);
+					values = Utils.ReadIntegers(writer, Settings.StringFunctionInputValue.Replace("{0}", (i + 1).ToString()), valueCount, true);
 
 				function.Multipliers = numbers.ToArray();
 				function.Operators = operators.ToArray();
@@ -166,7 +166,7 @@ namespace Telesyk.GraphCalculator.Internal
 				}
 
 				if (function is MaximalFunction && isFunctionsDenominators)
-					(function as MaximalFunction).Denominators = Utils.ReadIntegers(writer, Settings.FunctionsDenominatorsString.Replace("{0}", (i + 1).ToString()), valueCount, true); ;
+					(function as MaximalFunction).Denominators = Utils.ReadIntegers(writer, Settings.StringFunctionsDenominators.Replace("{0}", (i + 1).ToString()), valueCount, true); ;
 
 				functions.Add(function);
 			}
@@ -392,11 +392,11 @@ namespace Telesyk.GraphCalculator.Internal
 						bool currentIsOperator = _isOperator(current);
 
 						if (!currentIsNumber && !currentIsOperator)
-							throw new Exception(Settings.WrongDataString);
+							throw new Exception(Settings.StringWrongData);
 						else
 						{
 							if (j == input.Length - 1 && !currentIsNumber)
-								throw new Exception(Settings.WrongDataString);
+								throw new Exception(Settings.StringWrongData);
 
 							if (currentIsNumber)
 							{
@@ -410,7 +410,7 @@ namespace Telesyk.GraphCalculator.Internal
 							else
 							{
 								if (lastIsOperator)
-									throw new Exception(Settings.WrongDataString);
+									throw new Exception(Settings.StringWrongData);
 								else
 									operators.Add(current);
 							}
@@ -420,14 +420,14 @@ namespace Telesyk.GraphCalculator.Internal
 					}
 
 					if (numbers.Count != multipliersCount)
-						throw new Exception(Settings.WrongDataString);
+						throw new Exception(Settings.StringWrongData);
 				}
 				catch
 				{
 					numbers.Clear();
 					operators.Clear();
 
-					writer.WriteLine(Settings.WrongDataString);
+					writer.WriteLine(Settings.StringWrongData);
 					writer.WriteLine();
 
 					continue;
@@ -451,7 +451,7 @@ namespace Telesyk.GraphCalculator.Internal
    
 			while (!result)
 			{
-				string message = Settings.LimitationString.Replace("{0}", (index + 1).ToString());
+				string message = Settings.StringLimitation.Replace("{0}", (index + 1).ToString());
 				writer.Write($"{message}: ");
 				string input = Console.ReadLine();
 				writer.WriteFile(input);
@@ -481,7 +481,7 @@ namespace Telesyk.GraphCalculator.Internal
 				}
 				catch
 				{
-					writer.WriteLine(Settings.WrongDataString);
+					writer.WriteLine(Settings.StringWrongData);
 					writer.WriteLine();
 
 					continue;
