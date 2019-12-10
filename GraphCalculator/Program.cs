@@ -12,6 +12,6 @@ namespace Telesyk.GraphCalculator
 			Console.Title = Settings.TitleString;
 
 			Proccesor.Procces();
-		}
+		} 
 	}
 }
