@@ -45,7 +45,7 @@ namespace Telesyk.GraphCalculator.Internal
 				DateTime start = DateTime.Now;
 
 				foreach (LimitationFunction function in limitationFunctions)
-					function.Results = Utils.CalculateLimitRange(watcher, function);
+					function.Results = Utils.CalculateLimitRange(writer, watcher, function);
 
 				#region Advanced mode: limitation functions results
 				if (Settings.IsAdvancedMode)

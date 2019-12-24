@@ -290,18 +290,18 @@ namespace Telesyk.GraphCalculator.Internal
 
 		#region Calculating limit range
 
-		public static Dictionary<string, Result> CalculateLimitRange(Watcher watcher, LimitationFunction function)
+		public static Dictionary<string, Result> CalculateLimitRange(Writer writer, Watcher watcher, LimitationFunction function)
 		{
 			Dictionary<string, Result> results = new Dictionary<string, Result>();
 			List<int> list = new List<int>(function.Values);
 
-			_getCombinations(watcher, list, function, results);
+			_getCombinations(writer, watcher, list, function, results, String.Empty);
 			return results;
 		}
 
-		private static void _getCombinations(Watcher watcher, List<int> list, LimitationFunction function, Dictionary<string, Result> results, string current = "")
+		private static void _getCombinations(Writer writer, Watcher watcher, List<int> list, LimitationFunction function, Dictionary<string, Result> results, string current)
 		{
-			if (list.Count == 0)
+			if (list.Count == 0 && !results.ContainsKey(current))
 			{
 				string[] stringValues = current.Split('.');
 				int[] values = new int[stringValues.Length];
@@ -355,7 +355,7 @@ namespace Telesyk.GraphCalculator.Internal
 			{
 				List<int> next = new List<int>(list);
 				next.RemoveAt(i);
-				_getCombinations(watcher, next, function, results, current + (current != string.Empty ? "." : string.Empty) + list[i].ToString()); ;
+				_getCombinations(writer, watcher, next, function, results, current + (current != string.Empty ? "." : string.Empty) + list[i].ToString());
 			}
 		}
 
